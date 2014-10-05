@@ -1,0 +1,19 @@
+$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+// bower:scss
+@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+// endbower
+
+#gameArea {
+  position: absolute;
+  left:     50%;
+  top:      50%;
+}
+
+#gameCanvas {
+  width: 100%;
+  height: 100%;
+}
+
+div {
+    border: 2px solid;
+}
