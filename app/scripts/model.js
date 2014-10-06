@@ -143,7 +143,7 @@ function GameModel(initialSpeed,initialSnakeLength,boardLengthX,boardLengthY){
 
     function generateRandomPosition(){
 
-        return new Position(_.random(1, boardLengthX - 1),_.random(1,boardLengthY - 1));         
+        return new Position(_.random(1, boardLengthX - 2),_.random(1,boardLengthY - 2));         
     }
 
     function checkGameOver(){

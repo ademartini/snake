@@ -57,8 +57,15 @@ function draw() {
 
   context.clearRect(0, 0, context.canvas.width, context.canvas.height);
 
-  var blockHeight = gameCanvas.height / blocksY;
-  var blockWidth = gameCanvas.width / blocksX;
+  var blockDimension = gameCanvas.height / blocksY;
+
+  context.beginPath();
+  context.rect(0, 0, gameCanvas.width, gameCanvas.height);
+  context.fillStyle = '#B99C6B';
+  context.fill();
+  context.lineWidth = blockDimension * 2;
+  context.strokeStyle = '#855723';
+  context.stroke();
 
   if(!model){
 
@@ -69,21 +76,22 @@ function draw() {
       context.fillText('Welcome - Click to Begin!', gameCanvas.width / 2, gameCanvas.height / 2);    
       return;
   }
+
   _.each(model.snakeSegments,function(seg){
 
     context.beginPath();
-    context.rect(blockWidth*seg.position.x, blockHeight*seg.position.y, blockWidth, blockHeight);
+    context.rect(blockDimension*seg.position.x, blockDimension*seg.position.y, blockDimension, blockDimension);
     context.fillStyle = 'green';
     context.fill();
     context.lineWidth = 1;
-    context.strokeStyle = 'black';
+    context.strokeStyle = 'white';
     context.stroke();    
   });
 
   _.each(model.foodItems,function(item){
 
     context.beginPath();
-    context.rect(blockWidth*item.position.x, blockHeight*item.position.y, blockWidth, blockHeight);
+    context.rect(blockDimension*item.position.x, blockDimension*item.position.y, blockDimension, blockDimension);
     context.fillStyle = 'red';
     context.fill();
     context.lineWidth = 1;
@@ -95,7 +103,7 @@ function draw() {
   context.font = 'italic bold 24px sans-serif';
   context.textBaseline = 'top';
   context.textAlign = 'left';
-  context.fillText('Score: ' + model.score, 0, 0);
+  context.fillText('Score: ' + model.score, blockDimension, blockDimension);
 
   if(model.paused){
 
